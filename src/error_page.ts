@@ -16,11 +16,9 @@ abstract class BaseError {
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      background-color: #080808;
-      background-image: radial-gradient(circle, #161616 1px, transparent 1px);
-      background-size: 28px 28px;
-      color: #d8d8d8;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #18181b;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -28,66 +26,61 @@ abstract class BaseError {
       justify-content: center;
       text-align: center;
       padding: 48px 24px;
+      -webkit-font-smoothing: antialiased;
     }
-    .eyebrow {
-      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #444;
-      margin-bottom: 32px;
-      display: flex;
+    .tag {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    .eyebrow::before, .eyebrow::after {
-      content: '';
-      display: inline-block;
-      width: 20px;
-      height: 1px;
-      background: #c9a96e;
-      opacity: 0.4;
+      gap: 6px;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #737373;
+      margin-bottom: 24px;
     }
     .code {
-      font-size: 96px;
-      font-weight: 200;
-      letter-spacing: -0.05em;
+      font-size: 88px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
       line-height: 1;
-      color: #efefef;
-      margin-bottom: 16px;
+      color: #18181b;
+      margin-bottom: 12px;
     }
     .label {
-      font-size: 13px;
-      color: #555;
-      letter-spacing: 0.04em;
+      font-size: 18px;
+      font-weight: 500;
+      color: #18181b;
       margin-bottom: 8px;
-      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
-      text-transform: uppercase;
     }
     .detail {
-      font-size: 13px;
-      color: #444;
-      margin-bottom: 44px;
-      max-width: 320px;
+      font-size: 14px;
+      color: #737373;
+      margin-bottom: 36px;
+      max-width: 340px;
       line-height: 1.6;
     }
     a.back {
-      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
-      font-size: 9px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #555;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #18181b;
       text-decoration: none;
-      border-bottom: 1px solid #222;
-      padding-bottom: 2px;
-      transition: color 0.15s, border-color 0.15s;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 8px 16px;
+      transition: background 0.12s, border-color 0.12s;
     }
-    a.back:hover { color: #c9a96e; border-color: #c9a96e; }
+    a.back:hover { background: #f5f5f5; border-color: #d4d4d4; }
   </style>
 </head>
 <body>
-  <p class="eyebrow">GitHub Profile Trophy</p>
+  <span class="tag">GitHub Profile Trophy</span>
   <h1 class="code">${this.status}</h1>
   <p class="label">${this.message}</p>
   ${this.renderContent()}
@@ -120,267 +113,254 @@ export class Error400 extends BaseError {
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #080808;
-      --surface: #0e0e0e;
-      --surface-2: #121212;
-      --border: #1e1e1e;
-      --border-2: #282828;
-      --text: #d8d8d8;
-      --muted: #555;
-      --subtle: #2a2a2a;
-      --accent: #c9a96e;
-      --accent-dim: rgba(201,169,110,0.08);
-      --accent-glow: rgba(201,169,110,0.15);
-      --green: #5db896;
-      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      --mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+      --bg: #f5f5f5;
+      --surface: #ffffff;
+      --border: #e5e5e5;
+      --border-focus: #18181b;
+      --text: #18181b;
+      --muted: #737373;
+      --subtle: #a3a3a3;
+      --placeholder: #d4d4d4;
+      --tag-bg: #f0f0f0;
+      --code-bg: #fafafa;
+      --font: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      --mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
     }
-    html { height: 100%; }
     body {
       font-family: var(--font);
-      background-color: var(--bg);
-      background-image: radial-gradient(circle, #161616 1px, transparent 1px);
-      background-size: 28px 28px;
+      background: var(--bg);
       color: var(--text);
-      min-height: 100%;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 80px 24px 64px;
+      justify-content: center;
+      padding: 48px 20px;
+      -webkit-font-smoothing: antialiased;
     }
+    /* ── Header ── */
     header {
       text-align: center;
-      margin-bottom: 52px;
-      max-width: 480px;
+      margin-bottom: 32px;
+      max-width: 420px;
     }
-    .wordmark {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 28px;
-      display: flex;
+    .badge {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .wordmark::before {
-      content: '';
-      display: inline-block;
-      width: 16px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-    .wordmark::after {
-      content: '';
-      display: inline-block;
-      width: 16px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-    header h1 {
-      font-size: 30px;
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      color: #efefef;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-    header p {
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-      line-height: 1.7;
-    }
-    main {
-      width: 100%;
-      max-width: 480px;
-      position: relative;
-    }
-    /* Top accent line */
-    main::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, var(--accent) 40%, var(--accent) 60%, transparent 100%);
-      opacity: 0.35;
-      z-index: 1;
-    }
-    .panel {
+      gap: 6px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-top: none;
-      padding: 26px 30px;
-    }
-    .panel + .panel {
-      border-top: 1px solid var(--subtle);
-    }
-    .panel-label {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 500;
       color: var(--muted);
-      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
     }
-    /* URL row */
-    .url-wrap {
-      display: flex;
-      align-items: stretch;
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+    header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    /* ── Card ── */
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      background: var(--bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
     }
-    .url-sigil {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      opacity: 0.55;
-      padding: 0 12px;
+    .section {
+      padding: 24px;
+    }
+    .section + .section {
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 12px;
+    }
+    /* ── URL display ── */
+    .url-row {
       display: flex;
       align-items: center;
-      border-right: 1px solid var(--border);
-      background: var(--surface-2);
-      user-select: none;
-      letter-spacing: 0.05em;
+      gap: 8px;
+    }
+    .method-badge {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #16a34a;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 4px;
+      padding: 3px 7px;
+    }
+    .url-box {
+      display: flex;
+      flex: 1;
+      align-items: stretch;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
     }
     .url-text {
       font-family: var(--mono);
-      font-size: 11px;
-      color: var(--green);
-      padding: 10px 12px;
+      font-size: 11.5px;
+      color: #525252;
+      padding: 8px 12px;
       flex: 1;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      letter-spacing: 0.01em;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .copy-btn {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 0 16px;
-      background: transparent;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 500;
       color: var(--muted);
+      padding: 0 12px;
+      background: transparent;
       border: none;
       border-left: 1px solid var(--border);
       cursor: pointer;
-      transition: color 0.15s, background 0.15s;
+      transition: color 0.12s, background 0.12s;
       white-space: nowrap;
     }
-    .copy-btn:hover { color: var(--accent); background: var(--accent-dim); }
+    .copy-btn:hover { color: var(--text); background: #f5f5f5; }
     .copy-feedback {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-top: 9px;
-      height: 13px;
-      opacity: 0.7;
+      font-size: 11px;
+      color: #16a34a;
+      margin-top: 8px;
+      height: 14px;
     }
-    form { display: flex; flex-direction: column; gap: 20px; }
-    .field { display: flex; flex-direction: column; gap: 7px; }
+    /* ── Form ── */
+    form { display: flex; flex-direction: column; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
     label {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    label .opt {
-      opacity: 0.4;
-      font-size: 8px;
-      letter-spacing: 0.1em;
+    .opt-tag {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--subtle);
+      background: var(--tag-bg);
+      border-radius: 4px;
+      padding: 1px 6px;
     }
     input {
       font-family: var(--font);
       font-size: 14px;
-      padding: 10px 12px;
-      background: var(--bg);
+      padding: 9px 12px;
+      background: var(--surface);
       border: 1px solid var(--border);
+      border-radius: 6px;
       color: var(--text);
       outline: none;
       -webkit-appearance: none;
-      border-radius: 0;
       transition: border-color 0.15s, box-shadow 0.15s;
     }
     input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-dim);
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(24,24,27,0.06);
     }
-    input::placeholder { color: var(--subtle); }
+    input::placeholder { color: var(--placeholder); }
     .hint {
-      font-size: 11px;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--subtle);
       line-height: 1.5;
     }
     .hint a {
-      color: var(--accent);
-      opacity: 0.65;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201,169,110,0.25);
-      transition: opacity 0.15s;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: var(--border);
+      transition: color 0.12s;
     }
-    .hint a:hover { opacity: 1; }
-    .form-footer {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-top: 4px;
-    }
+    .hint a:hover { color: var(--text); text-decoration-color: var(--text); }
+    /* ── Button ── */
     button[type="submit"] {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 12px 28px;
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border-2);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      background: var(--text);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      align-self: flex-start;
+      transition: opacity 0.15s;
+      letter-spacing: -0.01em;
     }
-    button[type="submit"]:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-dim);
-    }
+    button[type="submit"]:hover { opacity: 0.82; }
+    /* ── Footer ── */
     footer {
-      margin-top: 36px;
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #272727;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--subtle);
       text-align: center;
     }
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--text); }
   </style>
 </head>
 <body>
   <header>
-    <p class="wordmark">GitHub Profile Trophy</p>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      GitHub Profile Trophy
+    </div>
     <h1>Generate your trophy card</h1>
-    <p>Visualise your GitHub stats as dynamic trophies<br>for your profile README</p>
+    <p>Visualise your GitHub stats as dynamic trophies in your profile README</p>
   </header>
-  <main>
-    <div class="panel">
-      <p class="panel-label">Output URL</p>
-      <div class="url-wrap">
-        <span class="url-sigil">GET</span>
-        <span class="url-text" id="url-display">${this.baseUrl}?username=USERNAME</span>
-        <button class="copy-btn" type="button" id="copy-btn">Copy</button>
+  <div class="card">
+    <div class="section">
+      <p class="section-label">Endpoint</p>
+      <div class="url-row">
+        <span class="method-badge">GET</span>
+        <div class="url-box">
+          <span class="url-text" id="url-display">${this.baseUrl}?username=USERNAME</span>
+          <button class="copy-btn" type="button" id="copy-btn">Copy</button>
+        </div>
       </div>
       <p class="copy-feedback" id="copy-feedback"></p>
     </div>
-    <div class="panel">
-      <p class="panel-label">Configure</p>
+    <div class="section">
+      <p class="section-label">Configure</p>
       <form action="${this.baseUrl}" method="get">
         <div class="field">
           <label for="username">GitHub username</label>
@@ -396,18 +376,16 @@ export class Error400 extends BaseError {
           >
         </div>
         <div class="field">
-          <label for="theme">Theme <span class="opt">— optional</span></label>
+          <label for="theme">Theme <span class="opt-tag">optional</span></label>
           <input type="text" name="theme" id="theme" placeholder="e.g. onedark, nord, flat">
           <p class="hint">Browse all themes in the <a href="https://github.com/ryo-ma/github-profile-trophy?tab=readme-ov-file#apply-theme" target="_blank" rel="noopener">documentation</a></p>
         </div>
-        <div class="form-footer">
-          <button type="submit">Generate</button>
-        </div>
+        <button type="submit">Generate trophies</button>
       </form>
     </div>
-  </main>
+  </div>
   <footer>
-    <p>Open source &mdash; ryo-ma/github-profile-trophy</p>
+    Open source &mdash; <a href="https://github.com/ryo-ma/github-profile-trophy" target="_blank" rel="noopener">ryo-ma/github-profile-trophy</a>
   </footer>
   <script>
     const copyBtn = document.getElementById('copy-btn');
@@ -425,8 +403,12 @@ export class Error400 extends BaseError {
 
     copyBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(urlDisplay.textContent).then(() => {
-        feedback.textContent = '// copied to clipboard';
-        setTimeout(() => { feedback.textContent = ''; }, 2000);
+        feedback.textContent = 'Copied to clipboard';
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => {
+          feedback.textContent = '';
+          copyBtn.textContent = 'Copy';
+        }, 2000);
       });
     });
   </script>
